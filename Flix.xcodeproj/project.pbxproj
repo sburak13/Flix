@@ -16,6 +16,7 @@
 		722333E22683944E005C9EAD /* FlixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 722333E12683944E005C9EAD /* FlixTests.m */; };
 		722333ED2683944E005C9EAD /* FlixUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 722333EC2683944E005C9EAD /* FlixUITests.m */; };
 		722333FC26839D83005C9EAD /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722333FB26839D83005C9EAD /* MoviesViewController.m */; };
+		722334022683D77F005C9EAD /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722334012683D77F005C9EAD /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		722333EE2683944E005C9EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		722333FA26839D83005C9EAD /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		722333FB26839D83005C9EAD /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		722334002683D77F005C9EAD /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		722334012683D77F005C9EAD /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 		722333FD26839E51005C9EAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				722334002683D77F005C9EAD /* MovieCell.h */,
+				722334012683D77F005C9EAD /* MovieCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				722333C72683944C005C9EAD /* AppDelegate.m in Sources */,
+				722334022683D77F005C9EAD /* MovieCell.m in Sources */,
 				722333FC26839D83005C9EAD /* MoviesViewController.m in Sources */,
 				722333D82683944D005C9EAD /* main.m in Sources */,
 				722333CA2683944C005C9EAD /* SceneDelegate.m in Sources */,
