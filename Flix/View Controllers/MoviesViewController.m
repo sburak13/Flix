@@ -9,6 +9,7 @@
 #import "MovieCell.h"
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "AFNetworkReachabilityManager.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -17,25 +18,59 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+
 @end
 
 @implementation MoviesViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+        NSLog(@"status changed");
+        //check for isReachable here
+        if ([[AFNetworkReachabilityManager sharedManager] isReachable])
+        {
+            NSLog(@"IS REACHABILE");
+            self.tableView.dataSource = self;
+            self.tableView.delegate = self;
+            
+            [self.activityIndicator startAnimating];
+            
+            [self fetchMovies];
+            
+            self.refreshControl = [[UIRefreshControl alloc] init];
+            [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+            [self.tableView insertSubview:self.refreshControl atIndex: 0];
+            
+            self.activityIndicator.layer.zPosition = 1;
+            
+        }
+        else
+        {
+            NSLog(@"NOT REACHABLE");
+            [self configAlertController];
+        }
+    }];
     
-    [self.activityIndicator startAnimating];
+}
+
+- (void)configAlertController {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
     
-    [self fetchMovies];
+    // create a try again action
+    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // handle cancel response here. Doing nothing will dismiss the view.
+    }];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex: 0];
+    // add the try again action to the alertController
+    [alert addAction:tryAgainAction];
     
-    self.activityIndicator.layer.zPosition = 1;
+    [self presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
+    }];
 }
 
 - (void)fetchMovies {
@@ -49,12 +84,15 @@
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                
-               NSLog(@"%@", dataDictionary);
+               // NSLog(@"%@", dataDictionary);
                
                self.movies = dataDictionary[@"results"];
+               
+               /*
                for (NSDictionary *movie in self.movies) {
                    NSLog(@"%@", movie[@"title"]);
                }
+               */
                
                [self.tableView reloadData];
            }
