@@ -78,7 +78,7 @@
             </objects>
             <point key="canvasLocation" x="-94" y="511"/>
         </scene>
-        <!--Movies Grid View Controller-->
+        <!--Children-->
         <scene sceneID="jkC-qx-gEO">
             <objects>
                 <viewController id="04c-yW-Fdh" customClass="MoviesGridViewController" sceneMemberID="viewController">
@@ -91,26 +91,26 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="clf-pk-d4c">
-                                    <size key="itemSize" width="200" height="293"/>
+                                    <size key="itemSize" width="214" height="318"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="sbt-3E-RMb" customClass="MovieCollectionCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="193" height="293"/>
+                                        <rect key="frame" x="100" y="0.0" width="214" height="318"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IrS-EJ-zP0">
-                                            <rect key="frame" x="0.0" y="0.0" width="193" height="293"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="214" height="318"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCf-Tp-vQn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="193" height="293"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="214" height="318"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="193" height="293"/>
+                                        <size key="customSize" width="214" height="318"/>
                                         <connections>
                                             <outlet property="posterView" destination="mCf-Tp-vQn" id="aXf-Wd-RvU"/>
                                         </connections>
@@ -121,7 +121,7 @@
                         <viewLayoutGuide key="safeArea" id="jxn-Pb-V5I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="c3b-g3-HPC"/>
+                    <navigationItem key="navigationItem" title="Children" id="c3b-g3-HPC"/>
                     <connections>
                         <outlet property="collectionView" destination="t9Q-zh-Aa2" id="mpH-Hl-A0h"/>
                     </connections>
@@ -206,7 +206,7 @@
         <scene sceneID="kSU-Dp-MIQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hjm-lv-1UA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="2iD-eX-koy"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing_tabbar_item" id="2iD-eX-koy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AcU-m7-26E">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -221,11 +221,11 @@
             </objects>
             <point key="canvasLocation" x="-93" y="-241"/>
         </scene>
-        <!--Movies-->
+        <!--Children-->
         <scene sceneID="JV3-tF-RcS">
             <objects>
                 <navigationController id="MFM-Rk-IOl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Movies" id="0ol-IU-UDw"/>
+                    <tabBarItem key="tabBarItem" title="Children" image="smiley" catalog="system" id="0ol-IU-UDw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="adu-uA-XCC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -240,6 +240,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="smiley" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
