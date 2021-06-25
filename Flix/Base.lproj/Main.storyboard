@@ -113,6 +113,7 @@
                                         <size key="customSize" width="214" height="318"/>
                                         <connections>
                                             <outlet property="posterView" destination="mCf-Tp-vQn" id="aXf-Wd-RvU"/>
+                                            <segue destination="OEt-45-po7" kind="show" id="wuP-Sd-amt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -168,10 +169,10 @@
                                         <rect key="frame" x="8" y="140" width="145" height="206"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-k3-Zh7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-k3-Zh7">
                                         <rect key="frame" x="161" y="265" width="245" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -248,6 +249,9 @@
             <point key="canvasLocation" x="1900" y="-241"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wuP-Sd-amt"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="smiley" catalog="system" width="128" height="121"/>

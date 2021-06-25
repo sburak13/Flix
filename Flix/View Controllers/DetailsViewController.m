@@ -42,6 +42,9 @@
     self.synopsisLabel.text = self.movie[@"overview"];
     self.dateLabel.text = self.movie[@"release_date"];
     
+    self.titleLabel.adjustsFontSizeToFitWidth = true;
+    self.titleLabel.minimumScaleFactor = 0.2;
+    
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
     [self.dateLabel sizeToFit];

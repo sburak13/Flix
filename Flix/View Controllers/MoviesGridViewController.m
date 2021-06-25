@@ -8,6 +8,7 @@
 #import "MoviesGridViewController.h"
 #import "MovieCollectionCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -73,6 +74,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    MovieCollectionCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell: tappedCell];
+    NSDictionary *movie = self.movies[indexPath.row];
+       
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+       
+    detailsViewController.movie = movie;
+    NSLog(@"Tapping on a movie 2!");
+    
+    
+    
+}
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
