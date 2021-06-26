@@ -2,7 +2,7 @@
 
 **Fllix** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **7** hours spent in total
+Time spent: **19** hours spent in total
 
 ## User Stories
 
@@ -19,15 +19,15 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 
 - [X] User can tap a poster in the collection view to see a detail screen of that movie
-- [ ] User can search for a movie.
+- [X ] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] User can view the large movie poster by tapping on a cell.
 - [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
 - [ ] Customize the selection effect of the cell.
-- [ ] Customize the navigation bar.
-- [] Customize the UI.
+- [X] Customize the navigation bar.
+- [X] Customize the UI.
 - [ ] User can view the app on various device sizes and orientations.
-- [x] Run your app on a real device.
+- [ ] Run your app on a real device.
 
 The following **additional** features are implemented:
 
@@ -41,6 +41,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+
+<iframe src="https://giphy.com/embed/0EaNMDDCgbHevImu94" width="236" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/0EaNMDDCgbHevImu94">via GIPHY</a></p>
 
 ## Notes
 
