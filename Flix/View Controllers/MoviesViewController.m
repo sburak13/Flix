@@ -11,12 +11,15 @@
 #import "UIImageView+AFNetworking.h"
 #import "AFNetworkReachabilityManager.h"
 
-@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) NSArray *filteredData;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
 
 
 @end
@@ -47,6 +50,9 @@
             
             self.activityIndicator.layer.zPosition = 1;
             
+            self.searchBar.delegate = self;
+
+            
         }
         else
         {
@@ -54,7 +60,7 @@
             [self configAlertController];
         }
     }];
-    
+        
 }
 
 - (void)configAlertController {
@@ -87,6 +93,9 @@
                // NSLog(@"%@", dataDictionary);
                
                self.movies = dataDictionary[@"results"];
+               self.filteredData = self.movies;
+
+               
                
                /*
                for (NSDictionary *movie in self.movies) {
@@ -95,6 +104,8 @@
                */
                
                [self.tableView reloadData];
+               
+               
            }
         
         sleep(1.);
@@ -108,7 +119,7 @@
 
 
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section {
-    return self.movies.count;
+    return self.filteredData.count;
 }
   
 - (UITableViewCell *)tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath {
@@ -117,7 +128,7 @@
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
     // NSLog(@"%@", [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredData[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     // cell.textLabel.text = movie[@"title"];
@@ -133,6 +144,37 @@
     
     return cell;
     
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        
+        /*
+         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSString *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject containsString:searchText];
+        }];
+         */
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", searchText];
+        
+        /*
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@“original_title”] containsString:searchText]; }];
+         */
+        
+        self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"%@", self.filteredData);
+        
+    }
+    else {
+        self.filteredData = self.movies;
+    }
+    
+    [self.tableView reloadData];
+ 
 }
 
 #pragma mark - Navigation
