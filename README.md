@@ -19,7 +19,7 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 
 - [X] User can tap a poster in the collection view to see a detail screen of that movie
-- [X ] User can search for a movie.
+- [X] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] User can view the large movie poster by tapping on a cell.
 - [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
@@ -42,7 +42,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<iframe src="https://giphy.com/embed/0EaNMDDCgbHevImu94" width="236" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/0EaNMDDCgbHevImu94">via GIPHY</a></p>
+![](https://i.imgur.com/aJQnLVU.gif)
 
 ## Notes
 
