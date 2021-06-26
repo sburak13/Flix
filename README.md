@@ -42,6 +42,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
+In case GIF doesn't load, go to: https://i.imgur.com/aJQnLVU.gif
+
 ![](https://i.imgur.com/aJQnLVU.gif)
 
 ## Notes
