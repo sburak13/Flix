@@ -10,11 +10,12 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "AFNetworkReachabilityManager.h"
+#import "Movie.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSMutableArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) NSArray *filteredData;
@@ -92,7 +93,18 @@
                
                // NSLog(@"%@", dataDictionary);
                
-               self.movies = dataDictionary[@"results"];
+               // self.movies = dataDictionary[@"results"];
+               
+               self.movies = [[NSMutableArray alloc] init];
+               
+               NSArray *dictionaries = dataDictionary[@"results"];
+               for (NSDictionary *dictionary in dictionaries) {
+                   //Movie *movie = initWithDictionary:dictionary// Call the Movie initializer here
+                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+                   [self.movies addObject:movie];
+               }
+               
+               
                self.filteredData = self.movies;
 
                
@@ -126,22 +138,12 @@
     //UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+    Movie *movie = self.filteredData[indexPath.row];
     
-    // NSLog(@"%@", [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section]);
-    NSDictionary *movie = self.filteredData[indexPath.row];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
-    // cell.textLabel.text = movie[@"title"];
-    // cell.textLabel.text = [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section];
+    // cell.movie = self.filteredData[indexPath.row];
+   
     
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
-    
+    [cell updateWithMovie:movie];
     return cell;
     
 }
@@ -185,7 +187,10 @@
     // Pass the selected object to the new view controller.
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    // NSDictionary *movie = self.movies[indexPath.row];
+    Movie *movie = self.movies[indexPath.row];
+    
+    // Movie *movie = [[Movie alloc] initWithDictionary:self.movies[indexPath.row]];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;

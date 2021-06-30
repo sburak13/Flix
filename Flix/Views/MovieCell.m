@@ -6,6 +6,8 @@
 //
 
 #import "MovieCell.h"
+#import "Movie.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation MovieCell
 
@@ -19,5 +21,20 @@
 
     // Configure the view for the selected state
 }
+
+
+
+//Refresh the cell
+- (void)updateWithMovie:(Movie *)movie {
+    
+    NSLog(@"%@", movie.title);
+    self.titleLabel.text = movie.title;
+    self.synopsisLabel.text = movie.synopsis;
+   
+    self.posterView.image = nil;
+    [self.posterView setImageWithURL:movie.posterUrl];
+    
+}
+ 
 
 @end
