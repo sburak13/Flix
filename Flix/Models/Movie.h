@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
++ (NSArray *)moviesWithDictionaries:(NSArray *)dictionaries;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

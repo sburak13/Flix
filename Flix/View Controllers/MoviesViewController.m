@@ -95,14 +95,16 @@
                
                // self.movies = dataDictionary[@"results"];
                
-               self.movies = [[NSMutableArray alloc] init];
+//               self.movies = [[NSMutableArray alloc] init];
+//
+//               NSArray *dictionaries = dataDictionary[@"results"];
+//               for (NSDictionary *dictionary in dictionaries) {
+//                   //Movie *movie = initWithDictionary:dictionary// Call the Movie initializer here
+//                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+//                   [self.movies addObject:movie];
+//               }
                
-               NSArray *dictionaries = dataDictionary[@"results"];
-               for (NSDictionary *dictionary in dictionaries) {
-                   //Movie *movie = initWithDictionary:dictionary// Call the Movie initializer here
-                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
-                   [self.movies addObject:movie];
-               }
+               
                
                
                self.filteredData = self.movies;
